@@ -237,10 +237,12 @@ function Utils:GetNumSpecializationsForClassID(classID)
 	return _G.GetNumSpecializationsForClassID and _G.GetNumSpecializationsForClassID(classID) or 3
 end
 
+local noCache = { "player", "npc", "target"}
 Utils.unitNameLookup = {}
 ---@param key string
 ---@param name string
 local function cacheUnitName(key, name)
+	if noCache[key:lower()] then return name end
 	local find = strfind(name, "-", nil, true)
 	if find and find < #name then
 		Utils.unitNameLookup[key] = name

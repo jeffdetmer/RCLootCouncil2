@@ -1,6 +1,7 @@
 ## Bugfixes
 
 - *Fixed using party comms in Delves before a party is made (#278).*
+- *Trading should be more stable (#281).*
 
 # 3.23.2
 
