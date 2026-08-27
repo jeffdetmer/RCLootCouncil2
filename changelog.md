@@ -2,6 +2,7 @@
 
 - *Fixed using party comms in Delves before a party is made (#278).*
 - *Trading should be more stable (#281).*
+- *Fixed error involving Session Data frame and auto hiding in combat.*
 
 # 3.23.2
 
