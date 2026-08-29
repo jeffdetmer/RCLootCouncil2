@@ -5,7 +5,14 @@ local logTable = {a = function(self, key, value) rawset(self, key, value) end}
 
 local addon_name, addon = "RCLootCouncil", {
 	-- Mock db object
-	db = {global = {log = setmetatable({}, {__newindex = function(self, k, v) logTable.a(self, k, v) end})}},
+	db = {
+		global = {
+			log = setmetatable({}, {
+				__newindex = function(self, k, v)
+					if v == "END" then return end -- ignore this
+					logTable.a(self, k, v)
+				end,
+		})}},
 	-- Mock defaults
 	defaults = {global = {logMaxEntries = 2000}},
 }

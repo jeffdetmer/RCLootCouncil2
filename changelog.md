@@ -1,3 +1,9 @@
+## Changes
+
+### Refactored Logging
+
+Roughly a 15 times throughput increase.
+
 ## Bugfixes
 
 - *Fixed using party comms in Delves before a party is made (#278).*
