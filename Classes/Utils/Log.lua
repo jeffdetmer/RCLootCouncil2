@@ -120,6 +120,8 @@ function private:Log(header, ...)
 	if addon.debug then
 		self:Print(header or "", ...)
 	end
+	if addon.db.profile and addon.db.profile.disableLogging then return end
+
 	local msg = self:EncodeMessage(header, ...)
 
 	self.debugLog[self.head] = msg
