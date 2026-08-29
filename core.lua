@@ -647,8 +647,7 @@ function RCLootCouncil:ChatCommand(msg)
 			table.concat(select(2, self.Utils:DumpLuaFormat(_G.RCLootCouncilDB or {}, "RCLootCouncilDB")), "\n"),
 			"\n\n"
 		)
-		local export = table.concat(temp)
-		TT:Release(temp)
+		local export = TT:ConcatAndRelease(temp)
 
 		if args[1] and (args[1] == "his" or args[1] == "history") then
 			if args[2] and args[2] == "only" then
@@ -657,8 +656,7 @@ function RCLootCouncil:ChatCommand(msg)
 			temp = TT:Acquire(export,
 				table.concat(select(2, self.Utils:DumpLuaFormat(_G.RCLootCouncilLootDB or {}, "RCLootCouncilLootDB")), "\n")
 			)
-			export = table.concat(temp)
-			TT:Release(temp)
+			export = TT:ConcatAndRelease(temp)
 		end
 		exportFrame.edit:SetText(export)
 		exportFrame:Show()
@@ -1401,8 +1399,7 @@ function RCLootCouncil:GetClassNamesFromFlag(classesFlag)
 		end
 	end
 	result[#result] = nil -- Remove last ", "
-	local text = table.concat(result, "")
-	TT:Release(result)
+	local text = TT:ConcatAndRelease(result)
 	classNamesFromFlagCache[classesFlag] = text
 	return text
 end
