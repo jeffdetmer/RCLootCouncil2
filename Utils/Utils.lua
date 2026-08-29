@@ -415,6 +415,10 @@ end
 --- Stringifies value(s) if it's not a secret value, otherwise returns `"<secret>"`.
 ---@param ... any
 function Utils:SecretsForPrint(...)
+	local len = select("#", ...)
+	-- Fast path for 0 or 1 arguments (no tables, no pool overhead, no unpack)
+	if len == 0 then return "" end
+	if len == 1 then return self:IsSecretValue(...) and "<secret>" or tostring(...) end
 	local ret = {}
 	for i = 1, select("#", ...) do
 		local v = select(i, ...)
