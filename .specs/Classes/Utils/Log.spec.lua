@@ -17,11 +17,12 @@ local addon_name, addon = "RCLootCouncil", {
 	defaults = {global = {logMaxEntries = 2000}},
 }
 
-loadfile(".specs/AddonLoader.lua")(nil, addon_name, addon).LoadArray {
+loadfile(".specs/AddonLoader.lua")(false, addon_name, addon).LoadArray {
 	"Classes/Core.lua",
-	"Classes/Utils/TempTable.lua",
 	"Classes/Utils/Item.lua",
+	"Classes/Lib/RxLua/embeds.xml",
 	"Utils/Utils.lua",
+	"Classes/Utils/TempTable.lua",
 	"Classes/Utils/Log.lua",
 }
 local Log = addon.Require "Utils.Log"

@@ -15,6 +15,11 @@ local private = {
 	maxEntries = 4000, -- Default fallback
 }
 
+local Subject = addon.Require("rx.Subject")
+---@class OnLog : rx.Subject
+---@field subscribe fun(self, onNext: fun(message:string)): rx.Subscription
+UtilsLog.OnLog = Subject.create()
+
 local select, tostring, date, time, wipe, tinsert, tremove = select, tostring, date, time, wipe, table.insert,
 table.remove
 -----------------------------------------------------------
@@ -128,6 +133,8 @@ function private:Log(header, ...)
 	self.head = self.head + 1
 	if self.head > self.maxEntries then self.head = 1 end -- Supposedly faster than using modulo
 	self.debugLog[self.head] = "END"
+
+	UtilsLog.OnLog(msg)
 end
 
 local lastTime, cachedHeader = 0, "<00:00:00>"
