@@ -44,7 +44,7 @@ end
 
 --- Releases a temporary table for recycling.
 --- Don't access the table after calling this.
---- @param tbl TempTable The temorary table to release.
+--- @param tbl TempTable The temporary table to release.
 function TempTable:Release (tbl)
    private:Release(tbl)
 end
