@@ -644,7 +644,7 @@ function RCLootCouncil:ChatCommand(msg)
 	elseif input == "sv" or input == "saved" or input == "savedvariables" then
 		local exportFrame = self.UI:New("RCHugeExportFrame")
 		local temp = TT:Acquire("-- ", addonname, " Saved Variables\n",
-			table.concat(select(2, self.Utils:DumpLuaFormat(_G.RCLootCouncilDB or {}, "RCLootCouncilDB")), "\n"),
+			table.concat(select(2, self.Utils:DumpConfig(_G.RCLootCouncilDB or {}, "RCLootCouncilDB")), "\n"),
 			"\n\n"
 		)
 		local export = TT:ConcatAndRelease(temp)
